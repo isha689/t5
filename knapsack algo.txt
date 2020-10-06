@@ -1,0 +1,8 @@
+Algorithm:
+
+1.	Declare a table DP[][] of size (Number of items+1*Capacity+1) to store the intermediate states and initialise it with ‘-1’ denoting all states as blank.
+2.	Define a function knapsack which takes as argument (`W->Weight left to be filled, ‘N’->number of left items)
+3.	Base case will be if we have ‘left weight=0’ or ‘number of items left=0’ , then return 0
+4.	Also consider the case when DP[i][j]!=-1 then straight away return that state as it is previously calculated.
+5.	If the current item’s weight is greater than left weight so that item cannot be included therefore return DP[n-1][W]=knapsack(n-1,W)
+6.	Else return DP[n-1][W]= max(val+knapsack(W-val,n-1),knapsack(W-val,n-1)) which means returning the maximum of the two cases when the current item is included or not included
