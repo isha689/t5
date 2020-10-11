@@ -1,8 +1,19 @@
 Algorithm:
 
-1.	Declare a table DP[][] of size (Number of items+1*Capacity+1) to store the intermediate states and initialise it with ‘-1’ denoting all states as blank.
-2.	Define a function knapsack which takes as argument (`W->Weight left to be filled, ‘N’->number of left items)
-3.	Base case will be if we have ‘left weight=0’ or ‘number of items left=0’ , then return 0
+1.	Declare a table DP[][] of size (Number of items+1*Capacity+1) to store the intermediate states and initialise it with â€˜-1â€™ denoting all states as blank.
+2.	Define a function knapsack which takes as argument (`W->Weight left to be filled, â€˜Nâ€™->number of left items)
+3.	Base case will be if we have â€˜left weight=0â€™ or â€˜number of items left=0â€™ , then return 0
 4.	Also consider the case when DP[i][j]!=-1 then straight away return that state as it is previously calculated.
-5.	If the current item’s weight is greater than left weight so that item cannot be included therefore return DP[n-1][W]=knapsack(n-1,W)
+5.	If the current itemâ€™s weight is greater than left weight so that item cannot be included therefore return DP[n-1][W]=knapsack(n-1,W)
 6.	Else return DP[n-1][W]= max(val+knapsack(W-val,n-1),knapsack(W-val,n-1)) which means returning the maximum of the two cases when the current item is included or not included
+
+Algorithm:o(n) space solution :: weight contains weights, val contains value and W is maximium capacity.
+
+1. Declare a table DP[] of size (Number of W+1) to store the intermediate states and initialise it with â€˜-1â€™ denoting all states as blank.
+2. Run nested loop : the outer loop should run from 0 to number of items (i), the inner loop should be initialized with Capacity and its value should decrese till it is equal to weight value corresponding from above loop(j).
+3. Through this equation we are going to choose maximum capacity we can have at each DP[j]=max(DP[j],DP[j-weight[i]]+val[i]);
+4. now return DP[W]
+5. for(int i=0;i<weight.size();i++)
+        for(int j=s;j>=weight[i];j--)
+            DP[j]=max(DP[j],DP[j-weight[i]]+val[i]);
+    return DP[W];
